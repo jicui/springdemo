@@ -1,0 +1,1 @@
+package core.aop;/** * Created with IntelliJ IDEA. * User: jicui * Date: 12/29/13 * Time: 6:00 PM * To change this template use File | Settings | File Templates. */public interface MindReader {    void interceptThoughts(String thoughts);    String getThoughts();}
