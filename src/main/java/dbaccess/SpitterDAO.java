@@ -1,0 +1,1 @@
+package dbaccess;/** * Created with IntelliJ IDEA. * User: jicui * Date: 1/3/14 * Time: 10:05 PM * To change this template use File | Settings | File Templates. */public interface SpitterDAO {    void add(Spitter spitter);    void remove(Spitter spitter);    Spitter getSpitterById(Long id) ;}
