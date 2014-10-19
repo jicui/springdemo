@@ -75,11 +75,11 @@ public class OGNLTEST {
                 return result;
             } catch (SAXException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (XPathExpressionException e) {
+            }catch (XPathExpressionException e) {
                 e.printStackTrace();
             } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return "NA";
@@ -150,8 +150,9 @@ public class OGNLTEST {
         Assert.assertEquals(value,"XQuery Kick Start");
         String value1=(String)Ognl.getValue("xml['//bookstore/book[price<40]/title']",request);
         Assert.assertEquals(value1,"Everyday Italian");
-        String value2=(String)Ognl.getValue("xml['//bookstore/book[author like 'Giada']/title/text()']",request);
-        Assert.assertEquals(value2,"Everyday Italian");
+        String value2=(String)Ognl.getValue("xml['//bookstore/book[author=\"Erik T. Ray\"]/title/text()']",request);
+        Assert.assertEquals(value2,"Learning XML");
+
     }
 
 
