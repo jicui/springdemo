@@ -51,7 +51,7 @@ public class OGNLTEST {
             return method;
         }
         public String getJson(String jsonPath){
-            Object jsonDoc = Configuration.defaultConfiguration().getProvider().parse(this.content);
+            Object jsonDoc = Configuration.defaultConfiguration().jsonProvider().parse(this.content);
             Object value = JsonPath.read(jsonDoc, jsonPath);
             if(value instanceof String){
                 return String.valueOf(value);
