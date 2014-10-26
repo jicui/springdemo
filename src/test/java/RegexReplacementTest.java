@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.regex.Matcher;
@@ -12,14 +13,17 @@ public class RegexReplacementTest
 
     @Test
     public void test_extract(){
-    String str="this is a #test# and  #json['$.store.book[0].author']# with #xml['//bookstore/book[author=\"Erik T. Ray\"]/title/text()']#";
-        String exp="#(json|xml|header|cookie)\\[.*\\]#?";
+        String str="this is a #test# and  #json['$.store.book[0].author']# with #xml['//bookstore/book[author=\"Erik T. Ray\"]/title/text()']#";
+        //String str="this is a #test# and  #json['$.store.book[0].author']#";
+        String exp="#(json|xml|header|cookie)\\['[^#]+'\\]#?";
         Pattern pattern= Pattern.compile(exp);
         Matcher matcher=pattern.matcher(str);
+        StringBuffer sb = new StringBuffer();
         while(matcher.find()){
            String s=matcher.group();
-           System.out.println(s+" start="+matcher.start()+" end="+matcher.end());
+           matcher.appendReplacement(sb, "dog");
         }
-
+        matcher.appendTail(sb);
+        Assert.assertEquals("this is a #test# and  dog with dog",sb.toString());
     }
 }
